@@ -1,0 +1,29 @@
+apiVersion: pulp.pulpproject.org/v1beta1
+kind: Pulp
+metadata:
+  name: example-pulp
+spec:
+  no_log: false
+  admin_password_secret: "example-pulp-admin-password"
+  storage_type: File
+  ingress_type: route
+  route_host: pulp.apps.ci-ln-l7bfmpk-76ef8.origin-ci-int-aws.dev.rhcloud.com
+  route_tls_termination_mechanism: edge
+  file_storage_access_mode: "ReadWriteOnce"
+  file_storage_size: "5Gi"
+  pulp_settings:
+    allowed_export_paths:
+      - /tmp
+    allowed_import_paths:
+      - /tmp
+    telemetry: false
+  content:
+    replicas: 1
+  worker:
+    replicas: 1
+  web:
+    replicas: 1
+  image: quay.io/pulp/galaxy-minimal
+  image_web: quay.io/pulp/galaxy-web
+  image_version: 4.6.3
+  image_web_version: 4.6.3
