@@ -1,4 +1,8 @@
 * copy simple.yaml to /tmp
-* run ansible.sh
+* on the pulp-operator src repo
+  * git checkout ansible
+  * run ansible.sh
 * wait until playbook stop execution (converges)
-* run go.sh
+* on the pulp-operator src repo
+  * git checkout backup-ansible-compatibility
+  * run go.sh
